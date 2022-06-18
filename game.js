@@ -8,7 +8,7 @@ class Game {
         this.mouse = new Vec2(0,0);
         this.mouseDown = false;
         this.draggedEntity = null;
-        this.selectionRadius = 20;
+        this.selectionRadius = 200;
 
         this.gravity = new Vec2(0,0.2);
 	    this.friction = 0.99;
@@ -85,16 +85,19 @@ class Game {
         }
     }
 
-    mouseDownHandler(e) {
+    mousePressed() {
 		this.mouseDown = true;
 		var nearest = this.nearestEntity();
-		if (nearest) {
+		if (nearest != null) {
 			this.draggedEntity = nearest;
 		}
 	};
 	
-	mouseUpHandler(e) {
+	mouseReleased() {
 		this.mouseDown = false;
+        if(this.draggedEntity != null) {
+            console.log("not null");
+        }
 		this.draggedEntity = null;
 	};
 

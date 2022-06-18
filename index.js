@@ -17,3 +17,15 @@ function draw(){
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
+
+function mousePressed() {
+    game.mousePressed();
+}
+
+function mouseReleased() {
+    game.mouseReleased();
+}
+
+function mouseDragged() {
+    game.mousePressed();
+}
