@@ -17,14 +17,21 @@ class Game {
     }
 
     bounds(particle) {
-		if (particle.pos.y > this.height-1)
-			particle.pos.y = this.height-1;
-		
-		if (particle.pos.x < 0)
-			particle.pos.x = 0;
 
-		if (particle.pos.x > this.width-1)
-			particle.pos.x = this.width-1;
+        let scaledWidth = windowWidth / scaleFactor;
+        let scaledHeight = windowHeight / scaleFactor;
+
+        if (particle.pos.y < -scaledHeight/2) // full height to allow off screen bounds
+			particle.pos.y = -scaledHeight/2;
+
+		if (particle.pos.y > scaledHeight/2)
+			particle.pos.y = scaledHeight/2;
+		
+		if (particle.pos.x < -scaledWidth/2)
+			particle.pos.x = -scaledWidth/2;
+
+		if (particle.pos.x > scaledWidth/2)
+			particle.pos.x = scaledWidth/2;
 	}
 
     update() {
