@@ -7,6 +7,7 @@ function setup(){
 }
 
 let scaleFactor = 1;
+var scaledMouseX, scaledMouseY;
 function draw(){
     clear();
     background(0)
@@ -14,6 +15,9 @@ function draw(){
     translate(windowWidth/2, windowHeight/2);
     scale(scaleFactor);
     image(imageMap.get("background"), 0, 0);
+
+    fill(255,0,0);
+    ellipse(scaledMouseX, scaledMouseY, 10, 10);
 
     game.update()
     game.draw()
@@ -25,13 +29,24 @@ function windowResized() {
 }
 
 function mousePressed() {
-    game.mousePressed((mouseX - windowWidth/2)/scaleFactor, (mouseY - windowHeight/2)/scaleFactor);
+    scaledMouseX = (mouseX - windowWidth/2)/scaleFactor
+    scaledMouseY = (mouseY - windowHeight/2)/scaleFactor
+    game.mousePressed();
 }
 
 function mouseReleased() {
-    game.mouseReleased((mouseX - windowWidth/2)/scaleFactor, (mouseY - windowHeight/2)/scaleFactor);
+    scaledMouseX = (mouseX - windowWidth/2)/scaleFactor
+    scaledMouseY = (mouseY - windowHeight/2)/scaleFactor
+    game.mouseReleased();
 }
 
 function mouseDragged() {
-    game.mousePressed((mouseX - windowWidth/2)/scaleFactor, (mouseY - windowHeight/2)/scaleFactor);
+    scaledMouseX = (mouseX - windowWidth/2)/scaleFactor
+    scaledMouseY = (mouseY - windowHeight/2)/scaleFactor
+    game.mousePressed();
+}
+
+function mouseMoved(){
+    scaledMouseX = (mouseX - windowWidth/2)/scaleFactor
+    scaledMouseY = (mouseY - windowHeight/2)/scaleFactor
 }
