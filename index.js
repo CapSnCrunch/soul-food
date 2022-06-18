@@ -5,8 +5,8 @@ function setup(){
 
 function draw(){
     clear();
-    background(200)
-    noStroke() 
+    background(200);
+    noStroke();
 }
 
 function windowResized() {
