@@ -5,7 +5,6 @@ class Game {
         this.state = state
         this.gameObjects = [];
 
-        this.mouse = new Vec2(0,0);
         this.mouseDown = false;
         this.draggedEntity = null;
         this.selectionRadius = 200;
@@ -32,8 +31,6 @@ class Game {
         for(let gameObject of this.gameObjects) {
             gameObject.update();
         }
-
-        let mouse = new Vec2(mouseX, mouseY);
 
         var i, j, c;
 
@@ -65,7 +62,7 @@ class Game {
         
         // handle dragging of entities
         if (this.draggedEntity)
-            this.draggedEntity.pos.mutableSet(mouse);
+            this.draggedEntity.pos.mutableSetToCoords(scaledMouseX, scaledMouseY);
             
         let step = deltaTime;
         // relax
@@ -111,7 +108,7 @@ class Game {
         for (c in this.gameObjects) {
             var particles = this.gameObjects[c].particles;
             for (i in particles) {
-                var d2 = particles[i].pos.dist2(this.mouse);
+                var d2 = particles[i].pos.dist2WithCoords(scaledMouseX, scaledMouseY);
                 if (d2 <= this.selectionRadius*this.selectionRadius && (entity == null || d2 < d2Nearest)) {
                     entity = particles[i];
                     constraintsNearest = this.gameObjects[c].constraints;

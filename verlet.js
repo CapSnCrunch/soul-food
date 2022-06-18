@@ -189,6 +189,12 @@
         this.y = v.y;
         return this;
     }
+
+    Vec2.prototype.mutableSetToCoords = function(vx, vy) {
+        this.x = vx;
+        this.y = vy;
+        return this;
+    }
     
     Vec2.prototype.mutableAdd = function(v) {
         this.x += v.x;
@@ -243,6 +249,12 @@
     Vec2.prototype.dist2 = function(v) {
         var x = v.x - this.x;
         var y = v.y - this.y;
+        return x*x + y*y;
+    }
+
+    Vec2.prototype.dist2WithCoords = function(vx, vy) {
+        var x = vx - this.x;
+        var y = vy - this.y;
         return x*x + y*y;
     }
     
