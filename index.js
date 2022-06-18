@@ -1,6 +1,6 @@
 var shroom;
 function preload(){
-    shroom = loadImage('assets/mushroom.png')
+    shroom = loadImage('assets/mushroom-2.png')
 }
 
 function setup(){
@@ -9,25 +9,28 @@ function setup(){
     imageMode(CENTER)
 }
 
-var x = y = 50
+var x = y = 50;
+var dragging = false;
 function draw(){
     clear();
-<<<<<<< HEAD
-    background(200);
+    background(255);
     noStroke();
-=======
-    background(255)
-    noStroke()
-    image(shroom, x, y)
-    game.update()
->>>>>>> ef033118c4bc43611a1d92c8172265e1113497e0
+    image(shroom, x, y);
+    game.update();
+    if (dragging){        
+        x += (mouseX - x) / 5
+        y += (mouseY - y) / 5
+    }
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-function mouseDragged(){
-    x += (mouseX - x) / 5
-    y += (mouseY - y) / 5
+function mousePressed(){
+    dragging = true;
+}
+
+function mouseReleased(){
+    dragging = false;
 }

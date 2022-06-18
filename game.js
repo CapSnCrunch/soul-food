@@ -5,7 +5,6 @@ class Game {
 
     update(){
         fill(0)
-        rect(0, 0, 50, 50)
     }
 }
 
